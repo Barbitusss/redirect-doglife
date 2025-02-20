@@ -23,15 +23,29 @@
         }
     </style>
     <script>
-        function openInSafari() {
+        function openInBrowser() {
             var url = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
-            window.location.replace(url); // Tenta forçar o navegador a sair do WebView
+
+            // Para Android: Usa Intent para abrir no Chrome
+            if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+                window.location.href = "intent://" + url.replace("https://", "") + "#Intent;scheme=https;package=com.android.chrome;end;";
+            } 
+            // Para iPhone: Usa truque do setTimeout para forçar saída do WebView
+            else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1 || navigator.userAgent.toLowerCase().indexOf("ipad") > -1) {
+                setTimeout(function() {
+                    window.location = "javascript:window.open('" + url + "', '_system');";
+                }, 100);
+            } 
+            // Para outros navegadores, apenas redireciona normalmente
+            else {
+                window.location.href = url;
+            }
         }
     </script>
 </head>
 <body>
     <h2>Abra no navegador externo</h2>
-    <p>O Instagram pode impedir o redirecionamento automático. Para acessar o conteúdo corretamente, clique no botão abaixo:</p>
-    <button onclick="openInSafari()">Abrir no navegador normal</button>
+    <p>O Instagram pode bloquear o redirecionamento automático. Para acessar o conteúdo corretamente, clique no botão abaixo:</p>
+    <button onclick="openInBrowser()">Abrir no navegador normal</button>
 </body>
 </html>
