@@ -4,24 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando...</title>
-    <script>
-        function openInBrowser() {
-            var url = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
-            var a = document.createElement('a');
-            a.href = url;
-            a.rel = 'noopener noreferrer';
-            a.target = '_blank';
-            a.click();
+    <title>Redirecionamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
         }
-        
-        // Tentar redirecionar automaticamente após 1 segundo
-        setTimeout(openInBrowser, 1000);
+        button {
+            padding: 15px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function openInSafari() {
+            var url = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
+            window.location.replace(url); // Tenta forçar o navegador a sair do WebView
+        }
     </script>
 </head>
 <body>
-    <h2>Redirecionamento</h2>
-    <p>Se o redirecionamento não funcionar automaticamente, clique no botão abaixo para abrir no navegador:</p>
-    <button onclick="openInBrowser()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Abrir no navegador normal</button>
+    <h2>Abra no navegador externo</h2>
+    <p>O Instagram pode impedir o redirecionamento automático. Para acessar o conteúdo corretamente, clique no botão abaixo:</p>
+    <button onclick="openInSafari()">Abrir no navegador normal</button>
 </body>
 </html>
