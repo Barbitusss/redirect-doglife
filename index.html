@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionamento</title>
+    <title>Abrir no navegador</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,31 +21,39 @@
             border-radius: 5px;
             margin-top: 20px;
         }
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
     <script>
-        function openInBrowser() {
-            var url = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
-
-            // Para Android: Usa Intent para abrir no Chrome
-            if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-                window.location.href = "intent://" + url.replace("https://", "") + "#Intent;scheme=https;package=com.android.chrome;end;";
-            } 
-            // Para iPhone: Usa truque do setTimeout para forçar saída do WebView
-            else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1 || navigator.userAgent.toLowerCase().indexOf("ipad") > -1) {
-                setTimeout(function() {
-                    window.location = "javascript:window.open('" + url + "', '_system');";
-                }, 100);
-            } 
-            // Para outros navegadores, apenas redireciona normalmente
-            else {
-                window.location.href = url;
-            }
+        function copyLink() {
+            var copyText = document.getElementById("link");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Link copiado! Agora abra o navegador e cole na barra de endereços.");
         }
     </script>
 </head>
 <body>
-    <h2>Abra no navegador externo</h2>
-    <p>O Instagram pode bloquear o redirecionamento automático. Para acessar o conteúdo corretamente, clique no botão abaixo:</p>
-    <button onclick="openInBrowser()">Abrir no navegador normal</button>
+    <h2>Abra no navegador normal</h2>
+    <p>O Instagram pode impedir que este link abra corretamente.</p>
+    <p><b>Para acessar o conteúdo:</b></p>
+    <ol>
+        <li>Copie o link abaixo.</li>
+        <li>Abra o navegador (Safari ou Chrome).</li>
+        <li>Cole o link na barra de endereços e pressione "Enter".</li>
+    </ol>
+    
+    <input type="text" value="https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/" id="link" readonly>
+    <br>
+    <button onclick="copyLink()">Copiar link</button>
 </body>
 </html>
+
