@@ -6,10 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionando...</title>
     <script>
-        window.location.href = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
+        function openInBrowser() {
+            var url = "https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/";
+            var a = document.createElement('a');
+            a.href = url;
+            a.rel = 'noopener noreferrer';
+            a.target = '_blank';
+            a.click();
+        }
+        
+        // Tentar redirecionar automaticamente após 1 segundo
+        setTimeout(openInBrowser, 1000);
     </script>
 </head>
 <body>
-    Se o redirecionamento não funcionar, <a href="https://www.doglife.com.br/blog/ebook-enriquecimento-ambiental-gatos-67b35c1d94581c7cff294123/">clique aqui</a>.
+    <h2>Redirecionamento</h2>
+    <p>Se o redirecionamento não funcionar automaticamente, clique no botão abaixo para abrir no navegador:</p>
+    <button onclick="openInBrowser()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Abrir no navegador normal</button>
 </body>
 </html>
